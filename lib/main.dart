@@ -73,6 +73,10 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  void onPressedResult() {
+    print('Button Pressed');
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -84,10 +88,18 @@ class MyApp extends StatelessWidget {
               children: [
                 Text("Why you left this IT Field behind?"),
                 ElevatedButton(
-                    onPressed: null, child: Text('Because of Dinesh')),
+                    onPressed: onPressedResult,
+                    child: Text('Because of Dinesh')),
                 ElevatedButton(
-                    onPressed: null, child: Text("Because of Anadkat")),
-                ElevatedButton(onPressed: null, child: Text("Because of Mausi"))
+                    onPressed: () =>
+                        print('answer 2 chosen'), //anonymous function example
+                    child: Text("Because of Anadkat")),
+                ElevatedButton(
+                    onPressed: () {
+                      print(
+                          'answer 3 chosen'); //anonymous function written in another style
+                    },
+                    child: Text("Because of Mausi"))
               ],
             )));
   }
