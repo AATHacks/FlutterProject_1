@@ -1,4 +1,7 @@
+// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, avoid_print, use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
+import 'package:project_2/question.dart';
 
 void main() {
   runApp(MyApp());
@@ -7,17 +10,18 @@ void main() {
 class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
+    // ignore: todo
     // TODO: implement createState
-    return MyAppState();
+    return _MyAppState();
   }
 }
 
-class MyAppState extends State<MyApp> {
-  var QuestionIndex = 0;
+class _MyAppState extends State<MyApp> {
+  var _QuestionIndex = 0;
 
-  void onPressedResult() {
+  void _onPressedResult() {
     setState(() {
-      QuestionIndex = QuestionIndex + 1;
+      _QuestionIndex = _QuestionIndex + 1;
     });
     print('Button Pressed');
   }
@@ -35,9 +39,9 @@ class MyAppState extends State<MyApp> {
             ),
             body: Column(
               children: [
-                Text(Questions[QuestionIndex]),
+                Question(Questions[_QuestionIndex]),
                 ElevatedButton(
-                    onPressed: onPressedResult,
+                    onPressed: _onPressedResult,
                     child: Text('Because of Dinesh')),
                 ElevatedButton(
                     onPressed: () =>
