@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:project_2/question.dart';
+import './answer.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,11 +20,11 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   var _QuestionIndex = 0;
 
-  void _onPressedResult() {
+  void _answerQuestion() {
     setState(() {
       _QuestionIndex = _QuestionIndex + 1;
     });
-    print('Button Pressed');
+    print(_QuestionIndex);
   }
 
   @override
@@ -40,10 +41,10 @@ class _MyAppState extends State<MyApp> {
             body: Column(
               children: [
                 Question(Questions[_QuestionIndex]),
-                ElevatedButton(
-                    onPressed: _onPressedResult,
-                    child: Text('Because of Dinesh')),
-                ElevatedButton(
+                Answer('Because Dinesh vaghri', _answerQuestion),
+                Answer('Because of Anadkat', _answerQuestion),
+                Answer('Becuase of Mausi', _answerQuestion)
+                /* ElevatedButton(
                     onPressed: () =>
                         print('answer 2 chosen'), //anonymous function example
                     child: Text("Because of Anadkat")),
@@ -52,7 +53,7 @@ class _MyAppState extends State<MyApp> {
                       print(
                           'answer 3 chosen'); //anonymous function written in another style
                     },
-                    child: Text("Because of Mausi"))
+                    child: Text("Because of Mausi")) */
               ],
             )));
   }
