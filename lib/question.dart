@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Question extends StatelessWidget {
   Question(this.questionText);
@@ -12,12 +10,12 @@ class Question extends StatelessWidget {
     return Container(
       // alignment: Alignment.center,
       width: double.infinity,
-      color: Colors.amber[600],
       margin: EdgeInsets.all(10),
       child: Text(
         questionText,
-        style: TextStyle(fontSize: 20),
-        // textAlign: TextAlign.center,
+        style: GoogleFonts.lato(
+            fontSize: 28, fontStyle: FontStyle.italic, color: Colors.blue),
+        textAlign: TextAlign.center,
       ),
     );
   }
