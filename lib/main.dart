@@ -2,8 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:project_2/center_widget.dart';
-import 'package:project_2/question.dart';
-import './answer.dart';
+import 'package:project_2/quiz.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,6 +18,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final String quizCompleteMessage = 'YOU DID IT!!';
   var Questions = [
     {
       'question': 'who is the president of india?',
@@ -45,7 +45,7 @@ class _MyAppState extends State<MyApp> {
   ];
   var _QuestionIndex = 0;
 
-  void _answerQuestion() {
+  void answerQuestion() {
     setState(() {
       _QuestionIndex = _QuestionIndex + 1;
     });
@@ -64,16 +64,11 @@ class _MyAppState extends State<MyApp> {
             title: Text('My First Flutter Designed App'),
           ),
           body: _QuestionIndex < Questions.length
-              ? Column(
-                  children: [
-                    Question(Questions[_QuestionIndex]['question'] as String),
-                    ...(Questions[_QuestionIndex]['answers'] as List<String>)
-                        .map((answer) {
-                      return Answer(answer, _answerQuestion);
-                    }).toList()
-                  ],
-                )
-              : CenterWidget("You Did IT!!")),
+              ? Quiz(
+                  questions: Questions,
+                  answerQuestion: answerQuestion,
+                  questionIndex: _QuestionIndex)
+              : CenterWidget(quizCompleteMessage)),
     );
   }
 }
