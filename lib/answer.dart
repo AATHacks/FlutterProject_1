@@ -7,10 +7,10 @@ class Answer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        //width: double.infinity,
+        width: double.infinity,
         child: ElevatedButton(
             style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.deepOrange)),
+                backgroundColor: MaterialStateProperty.all(Colors.blue[200])),
             onPressed: selectHandler,
             child: Text(options)));
   }
