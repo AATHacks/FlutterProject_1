@@ -43,23 +43,29 @@ class _MyAppState extends State<MyApp> {
       'answers': [
         {'text': 'blue', 'score': 1},
         {'text': 'orange', 'score': 0},
-        {'text': 'white', 'score': 1},
+        {'text': 'white', 'score': 0},
       ]
     }
   ];
   var _QuestionIndex = 0;
   int _totalScore = 0;
+  void _resetQuiz() {
+    setState(() {
+      _QuestionIndex = 0;
+      _totalScore = 0;
+    });
+  }
 
   void _answerQuestion(int score) {
     _totalScore = _totalScore + score;
     setState(() {
       _QuestionIndex = _QuestionIndex + 1;
     });
-    if (_QuestionIndex < Questions.length) {
+    /*  if (_QuestionIndex < Questions.length) {
       print(_QuestionIndex);
     } else {
       print('No more questions!!');
-    }
+    } */
   }
 
   @override
@@ -74,7 +80,7 @@ class _MyAppState extends State<MyApp> {
                   questions: Questions,
                   answerQuestion: _answerQuestion,
                   questionIndex: _QuestionIndex)
-              : CenterWidget(_totalScore)),
+              : CenterWidget(_totalScore, _resetQuiz)),
     );
   }
 }
